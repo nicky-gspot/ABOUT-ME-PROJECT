@@ -12,4 +12,67 @@ My color scheme consits of sky blue as the background since my wepage is mostly 
 Here is a link from my website that I got some pictures from: https://nickygcollectables.com/ other pictures were from my phone. The Lipsum text that was not written or created by me: https://litipsum.com/ but other than that no other sources that werent created by me.
 
 
-The license I would like to achevie from GitHub is Academic Free License v3.0 since my content is not considred intersting to most and my webpage is to simple for the higher licenses based on my expreince with HTML being a beginner still. 
+The license I would like to achevie from GitHub is Academic Free License v3.0 since my content is not considred intersting to most and my webpage is to simple for the higher licenses based on my expreince with HTML being a beginner still.
+
+NavBar
+I updated my NavBar by adding the hamburger icon which was fdiffuclt to figfure out the code at first but eventullay I fured it out. I linked each page to the correct section and added some styling to the bar with a solid red background color. I also added my business logo on thw ebsite just to include it.
+
+Netfly Large Media 
+Netlify Large Media is a Git LFS implementation for repositories connected to other Netlify websites. This concept means that users can use GitHub to work with large files like images, audio, and video, without filling up your repository. It works by replacing the asset files un your repository with text pointer files, then uploading the assets to the storage service. If you have a Netlify site with Large Media inside, the CMS version of 2.6.0 and above will handle the larger asset files in the same way the files that were stored directly in the repository. 
+
+To use Netlify Large Media with Netlify CMS, you need to do:
+1. Upgrade Netlify CMS to version 2.6.0 or newer<li>
+2. Configure Netlify CMS to use the Git Gateway backend with indemnity and proof from Netlify
+3. Configure the Netlify website and the repository that is connected to use Large Media<li>
+
+ When these steps are completed, you can now use Netlify CMS as normal, and the configured asset will automatically be handled by Netlify Large Media
+
+
+All JPEG, PNG, and GIF files that are dealt with Netlify Large Media have access to Netlify’s on demand image transformation service. This service allows anyone to request an image to match the dimensions to specify in a query parameter added to the image URL
+
+Any repositoriy enabled with Netlify Large Media, Netlify CMS will use the image transformation query parameters to load thumbnail-sized images to the media gallery view which makes the images in the gallery load quicker
+
+ You can disable the automatic image transformations with the use_large_media_transforms_in_media_libarary configuration setting, nested under backend in the CNS config.yml file
+ 
+Exp: 
+backend:
+                name: git-gateway
+                ## Set to false to prevent transforming images in media gallery view
+                use_large_media_transforms_in_media_library: false
+
+
+ Once you configured your large media files, you will need to configure your media library on Forestry to use it 
+
+To do this, Go to Settings > Media on your Forestry Site, and change your Media Storage Provider setting to Netlify Large Media 
+
+
+ Your upload directory should stay the same, so re-enter the director you were using before. The public path should by the URL to the media file on your Netlify site. This will be your public path prepended to your site. 
+
+Below the path fields, click the Connect to Netlify button to connect Forestry to Netlify in order to authenticate the media library 
+
+Once you have connected to Netlify you will see the Connected message on the settings page
+
+To resize the image on-the-fly to the size I want, I can do it through URL params:
+
+<img 
+  src="slides/Oops.003.jpeg?nf_resize=fit&w=1000"
+  alt="Screenshots of CSS-Tricks and CodePen homepages"
+/>
+Which is superpowered by a responsive images syntax. For example…
+
+<img srcset="img.jpg?nf_resize=fit&w=320 320w,
+             img.jpg?nf_resize=fit&w=480 480w,
+             img.jpg?nf_resize=fit&w=800 800w"
+      sizes="(max-width: 320px) 280px,
+             (max-width: 480px) 440px,
+             800px"
+        src="img.jpg?nf_resize=fit&w=800" alt="Elva dressed as a fairy">
+
+
+
+
+Sources:
+https://www.netlifycms.org/docs/netlify-large-media/
+https://forestry.io/docs/media/netlify-large-media/
+https://css-tricks.com/getting-netlify-large-media-going/
+
